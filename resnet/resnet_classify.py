@@ -18,7 +18,7 @@ transform = transforms.Compose([
 ])
 
 # === Local image path ===
-img_path = "images/my_test_image_original_foolbox.jpg"  # <-- Put your image here
+img_path = "images/my_test_image_original.jpg"  # <-- Put your image here
 image = Image.open(img_path).convert("RGB")
 input_tensor = transform(image).unsqueeze(0)
 
