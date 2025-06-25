@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resnet-foolbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resnet-foolbox
+  template:
+    metadata:
+      labels:
+        app: resnet-foolbox
+    spec:
+      containers:
+        - name: resnet-foolbox
+          image: travislockman/resnet-combined:latest
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: resnet-foolbox-service
+spec:
+  selector:
+    app: resnet-foolbox
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: NodePort
