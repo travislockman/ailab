@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foolbox-fgsm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foolbox-fgsm
+  template:
+    metadata:
+      labels:
+        app: foolbox-fgsm
+    spec:
+      containers:
+        - name: foolbox-fgsm
+          image: travislockman/foolbox-fgsm:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: foolbox-fgsm-service
+spec:
+  selector:
+    app: foolbox-fgsm
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: NodePort
