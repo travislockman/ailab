@@ -12,7 +12,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: resnet-foolbox-service
+                name: resnet-classify-service
                 port:
                   number: 80
           - path: /

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: resnet-foolbox
+  name: resnet-classify
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: resnet-foolbox
+      app: resnet-classify
   template:
     metadata:
       labels:
-        app: resnet-foolbox
+        app: resnet-classify
     spec:
       containers:
-        - name: resnet-foolbox
-          image: travislockman/resnet-combined:latest
+        - name: resnet-classify
+          image: travislockman/resnet-classify:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
@@ -22,10 +22,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: resnet-foolbox-service
+  name: resnet-classify-service
 spec:
   selector:
-    app: resnet-foolbox
+    app: resnet-classify
   ports:
     - protocol: TCP
       port: 80
