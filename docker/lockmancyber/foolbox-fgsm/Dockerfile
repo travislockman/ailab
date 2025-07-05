@@ -21,4 +21,4 @@ ENV GIT_PYTHON_REFRESH=quiet
 
 # Expose Flask port and define default command
 EXPOSE 5000
-CMD ["python", "foolbox_fgsm.py"]
+CMD ["python", "foolbox-fgsm.py"]

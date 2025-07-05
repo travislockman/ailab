@@ -8,23 +8,20 @@ spec:
     - host: www.lockmancyber.com
       http:
         paths:
-          - path: /api/
+          - path: /api/resnet/
             pathType: Prefix
             backend:
               service:
                 name: resnet-classify-service
                 port:
                   number: 80
-          - path: /
+          - path: /api/foolbox/
             pathType: Prefix
             backend:
               service:
-                name: lockmancyber
+                name: foolbox-fgsm-service
                 port:
                   number: 80
-    - host: lockmancyber.com
-      http:
-        paths:
           - path: /
             pathType: Prefix
             backend:

@@ -2,5 +2,6 @@ flask
 flask-cors
 torch==2.2.2
 torchvision==0.17.2
+numpy<2.0
 foolbox
 pillow

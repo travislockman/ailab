@@ -27,7 +27,7 @@ transform = transforms.Compose([
 # FGSM attack
 attack = FGSM()
 
-@app.route("/api/foolbox-fgsm", methods=["POST"])
+@app.route("/api/foolbox/fgsm", methods=["POST"])
 def foolbox_fgsm():
     if 'file' not in request.files:
         return jsonify({'error': 'No file uploaded'}), 400

@@ -26,7 +26,7 @@ preprocessing = transforms.Compose([
 with open("imagenet_classes.txt") as f:
     labels = [line.strip() for line in f.readlines()]
 
-@app.route("/api/classify", methods=["POST"])
+@app.route("/api/resnet/classify", methods=["POST"])
 def classify():
     if 'file' not in request.files:
         return jsonify({'error': 'No file uploaded'}), 400
