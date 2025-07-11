@@ -1,0 +1,52 @@
+# =========================
+# Prometheus Configuration
+# =========================
+
+global:
+  scrape_interval: 15s        # Scrape targets every 15 seconds
+  evaluation_interval: 15s    # Evaluate alert rules every 15 seconds
+  # scrape_timeout: 10s       # (Optional) Set global scrape timeout
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+        # Example: ["localhost:9093"]  # Add Alertmanager endpoints here
+
+rule_files:
+  # - "alert_rules.yml"       # Uncomment and define your alert rules here
+
+scrape_configs:
+
+  # -------------------------------
+  # Monitor Prometheus itself
+  # -------------------------------
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # -------------------------------
+  # Monitor external website (Blackbox Exporter)
+  # -------------------------------
+  - job_name: "blackbox"
+    metrics_path: /probe
+    params:
+      module: [http_2xx]       # Check for HTTP 2xx responses
+    static_configs:
+      - targets:
+          - https://lockmancyber.com
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: localhost:9115  # Blackbox Exporter endpoint
+
+  # -------------------------------
+  # Monitor kube-state-metrics (via NodePort)
+  # -------------------------------
+  - job_name: "kube-state-metrics"
+    static_configs:
+      - targets:
+          - 10.10.10.212:31080  # Node IP + NodePort of kube-state-metrics
