@@ -1,0 +1,37 @@
+# Redirect all HTTP traffic to HTTPS
+server {
+    listen 80 default_server;
+    server_name www.lockmancyber.com lockmancyber.com;
+    return 301 https://www.lockmancyber.com$request_uri;
+}
+
+# HTTPS reverse proxy for www.lockmancyber.com
+server {
+    listen 443 ssl default_server;
+    server_name www.lockmancyber.com;
+
+    ssl_certificate /etc/nginx/certs/lockmancyber.crt;
+    ssl_certificate_key /etc/nginx/certs/lockmancyber.key;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    location / {
+        proxy_pass http://10.10.10.212:31847;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+# HTTPS redirect for non-www domain
+server {
+    listen 443 ssl;
+    server_name lockmancyber.com;
+
+    ssl_certificate /etc/nginx/certs/lockmancyber.crt;
+    ssl_certificate_key /etc/nginx/certs/lockmancyber.key;
+
+    return 301 https://www.lockmancyber.com$request_uri;
+}

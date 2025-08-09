@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose a GenAI - LOCKMAN CYBER</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ff99;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .bg-circuit {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('images/bg-circuit.png') repeat;
+      opacity: 0.03;
+      z-index: -1;
+    }
+
+    .page-top {
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .logo img {
+      max-width: 120px;
+    }
+
+    .logo h1 {
+      font-size: 2em;
+      margin: 10px 0 0;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #00ff99;
+      font-size: 1.1em;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    nav a:hover {
+      border-color: #00ff99;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2, h3 {
+      text-align: center;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
+    .platform-desc {
+      margin-bottom: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    th, td {
+      border: 1px solid #00ff99;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #111;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #111;
+    }
+
+    tr:hover {
+      background-color: #222;
+    }
+
+    .note {
+      font-size: 0.9em;
+      color: #ccc;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-circuit"></div>
+
+  <div class="page-top">
+    <div class="logo">
+      <img src="images/lockman-cyber-logo.png" alt="LOCKMAN CYBER Logo" />
+      <h1><span class="typewriter">LOCKMAN CYBER<span class="cursor">|</span></span></h1>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Get In Touch</a>
+      <a href="AntaeusLAB.drawio.html" target="_blank">My Lab</a>
+    </nav>
+  </div>
+
+  <main>
+    <h2>🧠 Choose a GenAI</h2>
+    <p class="note">A quick reference to help you decide which AI platform suits your needs.</p>
+
+    <section>
+      <h3><u>How to Choose the Right GenAI in 2025</u></h3>
+      <p>With dozens of generative AI tools available, picking the right one depends on your goals. Here's a quick guide based on the most popular and capable GenAIs as of mid-2025:</p>
+
+      <p class="platform-desc">🧠 <strong>ChatGPT (OpenAI):</strong> Best for versatility, coding, logic, and tool integration (browsing, Python, file analysis). Ideal for professionals, educators, and power users.</p>
+
+      <p class="platform-desc">📄 <strong>Claude (Anthropic):</strong> Excellent for processing large documents, contracts, and PDFs. Great for writers, lawyers, and researchers.</p>
+
+      <p class="platform-desc">🔍 <strong>Gemini (Google):</strong> Good for users embedded in the Google ecosystem (Docs, Sheets, Gmail). Still catching up in memory handling.</p>
+
+      <p class="platform-desc">📚 <strong>Perplexity:</strong> Ideal for research and question-answering with live sources. Not suited for creativity or file handling.</p>
+
+      <p class="platform-desc">📘 <strong>Notion AI:</strong> Integrated into Notion for content summarization, planning, and note-taking. Limited outside of that environment.</p>
+
+      <p class="platform-desc">📊 <strong>Copilot (Microsoft):</strong> Strongest in the Office suite (Word, Excel, Teams). Corporate productivity-focused.</p>
+
+      <p class="platform-desc">🌟 <strong>Reka:</strong> An emerging contender blending speed and advanced reasoning. Watch this one closely.</p>
+
+      <p class="platform-desc">🤖 <strong>Adept ACT-1:</strong> Still early, but pushing toward “agent”-like autonomy and real-world task automation.</p>
+
+      <p>For most users, start with ChatGPT for broad capability. If you’re document-heavy, try Claude. Researchers may love Perplexity, and Office users will feel at home with Copilot. Consider your workflows, memory needs, and integrations when choosing.</p>
+    </section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Persistent Workspace</th>
+          <th>File Upload</th>
+          <th>Memory</th>
+          <th>Tool Use</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ChatGPT</td>
+          <td>✅ Projects</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅ (Code Interpreter, browsing, etc.)</td>
+          <td>Best all-around</td>
+        </tr>
+        <tr>
+          <td>Claude</td>
+          <td>⚠️ Limited Threads</td>
+          <td>✅ Large files</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>Great for doc-heavy tasks</td>
+        </tr>
+        <tr>
+          <td>Gemini</td>
+          <td>⚠️ Light Memory</td>
+          <td>✅</td>
+          <td>⚠️</td>
+          <td>✅ (Google tools)</td>
+          <td>Integrates Google ecosystem</td>
+        </tr>
+        <tr>
+          <td>Perplexity</td>
+          <td>⚠️ Threaded only</td>
+          <td>⚠️ Sources only</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>Best for research</td>
+        </tr>
+        <tr>
+          <td>Notion AI</td>
+          <td>✅ Workspace AI</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>Great in Notion</td>
+        </tr>
+        <tr>
+          <td>Copilot (MS)</td>
+          <td>✅ App-based memory</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>Office-focused</td>
+        </tr>
+        <tr>
+          <td>Reka</td>
+          <td>✅ (Emerging)</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>Powerful early contender</td>
+        </tr>
+        <tr>
+          <td>Adept ACT-1</td>
+          <td>✅</td>
+          <td>⚠️</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>Agent-based future tool</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

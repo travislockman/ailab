@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+/* General Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at center, #0f0f0f 0%, #000000 100%);
+  color: #00ff88;
+  text-align: center;
+  scroll-behavior: smooth;
+}
+
+/* Background Circuit Image */
+.bg-circuit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/background-circuit.png') center/cover no-repeat;
+  opacity: 0.15;
+  z-index: -1;
+}
+
+/* Homepage Container */
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 60px 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Centered Content Block */
+.homepage-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.logo img {
+  width: 100px;
+  height: auto;
+}
+
+/* Typewriter Text */
+.typewriter {
+  font-size: 3rem;
+  letter-spacing: 4px;
+  font-weight: bold;
+  color: #00ff88;
+  text-shadow: 0 0 4px #00ff88, 0 0 8px #007755;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+  font-weight: bold;
+  color: #00ff88;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Subtext Styling */
+.subtext {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 1.2s ease-in;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Navigation Bar */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0 20px;
+}
+
+/* Anchor Base Style */
+a {
+  color: #00ff88;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border: 2px solid #00ff88;
+  padding: 12px 24px;
+  border-radius: 12px;
+  transition: background 0.3s, color 0.3s;
+  margin: 10px;
+}
+
+a:hover {
+  background: #00ff88;
+  color: #000;
+}
+
+/* LAB PAGE Buttons - Responsive Layout */
+.lab-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.lab-buttons a {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid #00ff88;
+  border-radius: 10px;
+  color: #00ff88;
+  background-color: transparent;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.lab-buttons a:hover {
+  background-color: #00ff88;
+  color: #000;
+}
+
+@media (min-width: 600px) {
+  .lab-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .lab-buttons a {
+    width: auto;
+  }
+}
+
+/* Highlight Pink */
+.pink,
+.highlight-pink {
+  color: #ff44dd !important;
+  text-shadow: 0 0 4px #ff44dd, 0 0 8px #aa2277 !important;
+}
+
+/* About Page Styles */
+.about-main {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 20px 80px;
+}
+
+.about-photo {
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00ff88;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #00ff88;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Contact Buttons */
+.contact-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+/* Page Top Section */
+.page-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Prevent Dark Mode Extensions from Inverting Theme */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #000 !important;
+    color: #00ff88 !important;
+  }
+
+  * {
+    background-color: transparent !important;
+    color: inherit !important;
+    border-color: #00ff88 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+}

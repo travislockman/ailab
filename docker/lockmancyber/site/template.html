@@ -1,0 +1,47 @@
+<!-- mylab.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Lab - LOCKMAN CYBER</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body class="homepage">
+  <div class="bg-circuit"></div>
+  <div class="homepage-center">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/lockman-cyber-logo.png" alt="LOCKMAN CYBER Logo" />
+      </a>
+      <h1><span class="typewriter"></span><span class="cursor">|</span></h1>
+      <p class="subtext highlight-pink hidden">Visuals of my lab infrastructure</p>
+    </div>
+    <div class="button-row">
+      <a href="AntaeusLAB.drawio.html" target="_blank">Diagram</a>
+      <a href="grafana.html" style="border-color: orange; color: orange;">Grafana Dashboards</a>
+    </div>
+  </div>
+
+  <script>
+    const text = "MY LAB";
+    const typeTarget = document.querySelector(".typewriter");
+    const subtext = document.querySelector(".subtext");
+    let index = 0;
+    function type() {
+      if (index < text.length) {
+        typeTarget.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(() => {
+          subtext.classList.remove("hidden");
+          subtext.classList.add("fade-in");
+        }, 500);
+      }
+    }
+    document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
+  </script>
+</body>
+</html>

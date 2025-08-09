@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grafana Dashboards - LOCKMAN CYBER</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body class="homepage">
+  <div class="bg-circuit"></div>
+
+  <div class="homepage-center">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/lockman-cyber-logo.png" alt="LOCKMAN CYBER Logo" />
+      </a>
+      <h1><span class="typewriter"></span><span class="cursor">|</span></h1>
+      <p class="subtext highlight-pink hidden">Live monitoring of my lab environment</p>
+    </div>
+
+    <div class="lab-buttons">
+      <a href="https://grafana.lockmancyber.com/d/ov0oEgdik/linux-overview?orgId=1&from=now-1h&to=now&timezone=browser&var-host=10.10.10.211:9100&var-host=10.10.10.212:9100&var-host=10.10.10.213:9100&var-host=172.10.10.15:9100&var-job=ubuntu-servers" target="_blank">
+        Linux Environment
+      </a>
+      <a href="https://grafana.lockmancyber.com/d/k8s_views_global/kubernetes-global?orgId=1&from=now-1h&to=now&timezone=browser&var-datasource=fer8mdj4w1r7ka&var-cluster=&var-resolution=30s&var-job=ubuntu-servers&refresh=30s" target="_blank">
+        K8s Global View
+      </a>
+      <a href="https://grafana.lockmancyber.com/d/xtkCtBkiz/website-monitoring?var-interval=10s&orgId=1&from=now-1h&to=now&timezone=browser&var-target=$__all&refresh=10s" target="_blank">
+        Website Uptime
+      </a>
+      <a href="https://grafana.lockmancyber.com/d/rYdddlPWk/linux-environment?orgId=1&from=now-24h&to=now&timezone=browser&var-DS_PROMETHEUS=fer8mdj4w1r7ka&var-job=ubuntu-servers&var-nodename=k8s-master-1&var-node=10.10.10.213:9100&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m" target="_blank">
+        Linux Drilldown
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const text = "GRAFANA DASHBOARDS";
+    const typeTarget = document.querySelector(".typewriter");
+    const subtext = document.querySelector(".subtext");
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        typeTarget.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(() => {
+          subtext.classList.remove("hidden");
+          subtext.classList.add("fade-in");
+        }, 500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
+  </script>
+</body>
+</html>

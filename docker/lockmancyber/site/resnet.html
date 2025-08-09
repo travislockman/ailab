@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ResNet Classifier - LOCKMAN CYBER</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    .lab-guide ul {
+      text-align: left;
+      padding-left: 20px;
+    }
+    .lab-guide {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-circuit"></div>
+
+  <div class="page-top">
+    <div class="logo">
+      <img src="images/lockman-cyber-logo.png" alt="LOCKMAN CYBER Logo" />
+      <h1><span class="typewriter">LOCKMAN CYBER<span class="cursor">|</span></span></h1>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Get In Touch</a>
+      <a href="playground.html">Playground</a>
+    </nav>
+  </div>
+
+  <main class="about-main">
+    <h2>ResNet Image Classifier</h2>
+    <p>Upload an image and let ResNet identify it using deep learning.</p>
+
+    <section>
+      <input type="file" id="resnetImage" accept="image/*" />
+      <div class="contact-buttons">
+        <button type="button" onclick="classifyImage()">Classify</button>
+      </div>
+      <p><strong>Prediction:</strong> <span id="resnetLabel">Waiting for image...</span></p>
+    </section>
+
+    <hr style="margin: 40px 0; border-color: #00ff88;" />
+
+    <section class="lab-guide">
+      <h3>🧪 Lab Instructions: How to Use ResNet</h3>
+      <ul>
+        <li>Click “Choose File” to upload an image (JPG works best).</li>
+        <li>Click “Classify” to submit the image to the ResNet model.</li>
+        <li>View the predicted label below the button.</li>
+        <li>Try different objects, animals, logos, or scenery to test accuracy.</li>
+        <li>Now upload the same photo to your favorite GenAI and ask it to classify the image.</li>
+        <p>
+        What a difference a decade can make huh? This model, ResNet-18 can only choose from 1000 categories, and makes best effort to classify an image.
+        </p>
+      </ul>
+
+      <h3>📚 A Brief History of ResNet</h3>
+      <p>
+        ResNet, or Residual Network, was introduced by Microsoft Research in 2015 and won the ImageNet competition that year with a top-5 error rate of just 3.57%. It addressed the vanishing gradient problem that plagued deep networks by introducing <strong>skip connections</strong>, allowing gradients to flow directly through the network. This architecture made it possible to train extremely deep neural networks (over 100 layers), which dramatically improved performance in image recognition. ResNet set a new standard for convolutional architectures and is still widely used in computer vision tasks today.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const API_URL = 'https://www.lockmancyber.com/api/resnet';
+
+    async function classifyImage() {
+      const fileInput = document.getElementById('resnetImage');
+      const labelSpan = document.getElementById('resnetLabel');
+      if (!fileInput.files.length) return alert("Please upload an image.");
+
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+
+      labelSpan.textContent = "Classifying...";
+      try {
+        const res = await fetch(`${API_URL}/classify`, {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        labelSpan.textContent = data.label || "Unable to classify.";
+      } catch (err) {
+        labelSpan.textContent = "Error connecting to backend.";
+      }
+    }
+  </script>
+</body>
+</html>

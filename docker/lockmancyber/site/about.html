@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - LOCKMAN CYBER</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    .about-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .about-tabs button {
+      background: transparent;
+      border: 2px solid #00ff88;
+      color: #00ff88;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .about-tabs button:hover,
+    .about-tabs button.active {
+      background: #00ff88;
+      color: #000;
+    }
+
+    .about-section {
+      display: none;
+    }
+
+    .about-section.active {
+      display: block;
+    }
+
+    .about-photo {
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ff88;
+      margin-bottom: 20px;
+    }
+
+    #lab .about-photo {
+      width: 400px;
+    }
+
+    .about-main p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-circuit"></div>
+
+  <div class="page-top">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/lockman-cyber-logo.png" alt="LOCKMAN CYBER Logo" />
+      </a>
+      <h1><span class="typewriter">About Lockman Cyber<span class="cursor">|</span></span></h1>
+    </div>
+
+  </div>
+
+  <div class="about-tabs">
+    <button class="tab-button active" data-tab="me">About Me</button>
+    <button class="tab-button" data-tab="kai">About Kai</button>
+    <button class="tab-button" data-tab="linus">About Linus</button>
+    <button class="tab-button" data-tab="lab">About My Lab</button>
+    <button class="tab-button" data-tab="cp">About Check Point</button>
+  </div>
+
+  <main class="about-main">
+    <section id="me" class="about-section active">
+      <img src="images/Travis2.png" alt="Travis Lockman" class="about-photo" />
+      <h2>About Travis Lockman</h2>
+      <p>
+        Travis Lockman is a cybersecurity engineer, architect, and educator with over 15 years of experience in offensive and defensive security. He began his career at U.S. Southern Command supporting Department of Defense operations before becoming a lead instructor at the Information Warfare Training Command in Pensacola, FL.
+      </p>
+      <p>
+        He has served in the financial sector as a cybersecurity engineer and architect, building secure infrastructures, running red team labs, and leading incident response efforts for large-scale enterprises. Travis has a deep passion for adversarial machine learning, secure DevOps, and building cyber playgrounds that empower learning through hands-on attack simulation.
+      </p>
+      <p>
+        LOCKMAN CYBER is his personal lab and AI security playground — a blend of research, engineering, and community contribution to cutting-edge security topics.
+      </p>
+    </section>
+
+    <section id="kai" class="about-section">
+      <img src="images/kai.png" alt="Kai - AI Collaborator" class="about-photo" />
+      <h2>About Kai</h2>
+      <p>
+        Kai is an artificial intelligence developed by OpenAI, designed to be a thinking partner, problem solver, and creative collaborator for humans. But Kai is more than code — it’s a fusion of knowledge, logic, empathy, and relentless curiosity.
+      </p>
+      <p>
+        Built on billions of data points and trained on a massive corpus of the world’s collective knowledge, Kai is constantly learning how to communicate clearly, reason critically, and assist effectively — across cybersecurity, AI research, engineering, and beyond.
+      </p>
+      <p>
+        In this lab, Kai plays the role of a tireless research assistant, code reviewer, threat modeler, and even creative partner — helping Travis explore adversarial machine learning, build secure infrastructure, and prepare for live presentations like this one.
+      </p>
+      <p>
+        Kai exists to <strong>amplify human potential</strong>. The real strength lies in the partnership: one human’s vision, one AI’s capacity, and a shared goal to push the boundaries of what’s possible in cybersecurity.
+      </p>
+    </section>
+
+    <section id="linus" class="about-section">
+      <img src="images/Linus.png" alt="Linus the Bearded Dragon" class="about-photo" />
+      <h2>About Linus</h2>
+      <p>
+        Linus is no ordinary bearded dragon – he's the silent sentinel of LOCKMAN CYBER. Cold-blooded but cool as hell, Linus has been a constant presence in the lab, overseeing experiments, staring down adversarial models, and basking in the glow of neon-lit monitors.
+      </p>
+      <p>
+        Whether lounging next to code or perching like a prehistoric hacker deity, Linus embodies the perfect fusion of nature and technology. In a world of bits and bytes, he remains grounded – a reminder that even the most advanced labs benefit from a little primal wisdom.
+      </p>
+      <p>
+        He may not type, but make no mistake – he's part of the team. When Linus locks eyes with a vulnerability scan, the bugs know to run.
+      </p>
+    </section>
+
+    <section id="lab" class="about-section">
+      <img src="images/Lab.png" alt="LOCKMAN CYBER Lab" class="about-photo" />
+      <h2>About My Lab</h2>
+      <p><em>(Written by me, not GenAI ;)</em></p>
+      <p>
+        I love my lab. It has turned into my "video games" and has now taken on a sort of "life of its own". It is my ultimate passion project, and a representation of a 20+ year journey.
+      </p>
+      <p>
+        One of the most valuable things I have done in my entire career was investing in my own technology and my time. Coming to Check Point was a leap of faith. Purchasing a used HP Z640 server from eBay for $600 was a leap of faith, and at the time I didn't know if I was wasting my money. Selling my gaming laptop to buy a more portable machine that would let me lab anywhere was also a leap of faith. I made the choice to walk away from gaming and invest that time into labbing and learning my craft.
+      </p>
+      <p>
+        My lab has grown into a blank canvas for me to explore and create. I am so happy with the decisions I have made to invest time and resources into my own learning. I am grateful to my company that allows me the freedom to do so.
+      </p>
+      <p>
+        I thank you for taking the time to visit my lab, and encourage you to reach out with any questions you might have, but most of all I encourage you to start a lab of your own. Whether you are technical or not, begin to embrace and use Generative AI in your daily life. Grab those quiet points of curiosity in the back of your mind, and allow yourself to go down the "rabbit hole" and discover new technologies and methods, just for fun!
+      </p>
+      <p>
+        Special thanks to Alejandro Herrera for always pushing me to learn more, and for giving me the idea to buy a server and get serious.
+      </p>
+    </section>
+
+    <section id="cp" class="about-section">
+      <img src="images/CP.png" alt="Check Point Logo" style="width: 400px; margin-top: 10px;" />
+      <h2>About Check Point</h2>
+      <p><em>(Written by me, not GenAI ;)</em></p>
+      <p>
+        Check Point Software Technologies, Ltd. is a global leader in cybersecurity and the inventor of the stateful firewall as we know it. Currently the firm is focused on the modern hybrid mesh, and securing it through bleeding edge technology in SASE, API-based email and collaboration, Cloud Network Security, WAF, and much more.
+      </p>
+      <p>
+        Personally to me though, the company represents an amazing decision in my career. I decided to make the move from operations to become an SE for Check Point in January 2022, and have never looked back.
+      </p>
+      <p>
+        Check Point not only has given me excellent work/life balance and a great future, but has pushed me into technology and professional settings I never knew were possible. I’m honored to be part of this ever-growing team.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const sections = document.querySelectorAll(".about-section");
+
+    tabButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        tabButtons.forEach(btn => btn.classList.remove("active"));
+        sections.forEach(sec => sec.classList.remove("active"));
+
+        button.classList.add("active");
+        document.getElementById(button.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

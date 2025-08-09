@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Foolbox FGSM Attack - LOCKMAN CYBER</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    .lab-guide ul {
+      text-align: left;
+      padding-left: 20px;
+    }
+    .lab-guide {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .side-by-side {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .side-by-side img {
+      max-width: 300px;
+      border: 2px solid #00ff88;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-circuit"></div>
+
+  <div class="page-top">
+    <div class="logo">
+      <img src="images/lockman-cyber-logo.png" alt="LOCKMAN CYBER Logo" />
+      <h1><span class="typewriter">LOCKMAN CYBER<span class="cursor">|</span></span></h1>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Get In Touch</a>
+      <a href="playground.html">Playground</a>
+    </nav>
+  </div>
+
+  <main class="about-main">
+    <h2>Foolbox FGSM Adversarial Attack</h2>
+    <p>Upload an image and apply an adversarial FGSM attack with your chosen epsilon.</p>
+
+    <section>
+      <input type="file" id="foolboxImage" accept="image/*" />
+      <br><br>
+      <label for="epsilon"><strong>Epsilon (0.0 - 1.0):</strong></label>
+      <input type="number" id="epsilon" min="0" max="1" step="0.01" value="0.03" />
+      <div class="contact-buttons">
+        <button type="button" onclick="runFoolboxFGSM()">Run FGSM Attack</button>
+      </div>
+
+      <div class="side-by-side">
+        <div>
+          <h4>Original</h4>
+          <img id="originalImage" style="display:none;" />
+        </div>
+        <div>
+          <h4>Adversarial</h4>
+          <img id="advImage" style="display:none;" />
+          <br><br>
+          <a id="downloadLink" href="#" download="foolbox_output.png">Download Adversarial Image</a>
+        </div>
+      </div>
+    </section>
+
+    <hr style="margin: 40px 0; border-color: #00ff88;" />
+
+    <section class="lab-guide">
+      <h3>🧪 Lab Instructions: Foolbox FGSM</h3>
+      <ul>
+        <li>Upload an image you'd like to attack (PNG or JPG).</li>
+        <li>Set the <code>epsilon</code> value to control perturbation strength.</li>
+        <li>Click "Run FGSM Attack" to generate an adversarial version of the image.</li>
+        <li>Compare side-by-side output, and click "Download" to save the adversarial image.</li>
+      </ul>
+
+      <h3>🔍 What is FGSM?</h3>
+      <p>
+        The Fast Gradient Sign Method (FGSM) is a simple and efficient adversarial attack. It works by
+        adding small perturbations to an image in the direction of the gradient of the loss function
+        with respect to the input. This causes the model to misclassify the image while making only minimal changes to it.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const API_URL = 'https://www.lockmancyber.com/api/foolbox';
+
+    async function runFoolboxFGSM() {
+      const fileInput = document.getElementById('foolboxImage');
+      const epsilonInput = document.getElementById('epsilon');
+      const originalImage = document.getElementById('originalImage');
+      const advImage = document.getElementById('advImage');
+      const downloadLink = document.getElementById('downloadLink');
+
+      if (!fileInput.files.length) return alert("Please upload an image.");
+
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+      formData.append('epsilon', epsilonInput.value);
+
+      try {
+        const res = await fetch(`${API_URL}/fgsm`, {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+
+        if (data.error) return alert(data.error);
+
+        originalImage.src = 'data:image/png;base64,' + data.original;
+        advImage.src = 'data:image/png;base64,' + data.adversarial;
+        originalImage.style.display = 'block';
+        advImage.style.display = 'block';
+
+        downloadLink.href = advImage.src;
+      } catch (err) {
+        alert("Error reaching backend.");
+      }
+    }
+  </script>
+</body>
+</html>
