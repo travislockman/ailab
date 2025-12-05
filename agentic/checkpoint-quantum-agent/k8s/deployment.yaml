@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkpoint-quantum-agent
+  namespace: blue-team
+  labels:
+    app: checkpoint-quantum-agent
+    component: blue-team-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: checkpoint-quantum-agent
+  template:
+    metadata:
+      labels:
+        app: checkpoint-quantum-agent
+        component: blue-team-agent
+    spec:
+      serviceAccountName: checkpoint-quantum-agent
+      containers:
+      - name: quantum-agent
+        image: checkpoint-quantum-agent:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: health
+        env:
+        - name: CHECKPOINT_MGMT_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: checkpoint-config
+              key: management-server
+        - name: CHECKPOINT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: checkpoint-credentials
+              key: username
+        - name: CHECKPOINT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: checkpoint-credentials
+              key: password
+        - name: CHECKPOINT_DOMAIN
+          valueFrom:
+            configMapKeyRef:
+              name: checkpoint-config
+              key: domain
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-credentials
+              key: api-key
+        - name: AGENT_NAME
+          value: "quantum-blue-team-agent"
+        - name: LOG_LEVEL
+          value: "INFO"
+        - name: LOG_FORMAT
+          value: "json"
+        - name: K8S_NAMESPACE
+          value: "blue-team"
+        - name: API_TIMEOUT
+          value: "30"
+        - name: API_RETRY_ATTEMPTS
+          value: "3"
+        - name: API_RETRY_DELAY
+          value: "2"
+        - name: AUTO_PUBLISH
+          value: "false"
+        - name: TLS_VERIFY
+          value: "true"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        volumeMounts:
+        - name: logs
+          mountPath: /app/logs
+        - name: config
+          mountPath: /app/config
+          readOnly: true
+      volumes:
+      - name: logs
+        emptyDir: {}
+      - name: config
+        configMap:
+          name: checkpoint-config
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+
